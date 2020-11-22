@@ -5,7 +5,7 @@ function startTime(){
     // Format datetime : 2020-11-17 07:31:00
     let today       = new Date()
     let year        = today.getFullYear()
-    let month       = today.getMonth() + 1  //year เริ่มจาก 0
+    let month       = today.getMonth() + 1  //month เริ่มจาก 0
     let date        = today.getDate()
     let h           = today.getHours()
     let m           = today.getMinutes()
@@ -35,7 +35,7 @@ setInterval(() => {
     console.log(`date_time = ${date_time}`);
 
     var sql = `INSERT INTO total(total_id, total_people, total_car, date) VALUES(${null}, ${people_total}, ${cars_total}, "${date_time}")`
-    if("20:00:00" === time){
+    if("13:00:00" === time){    //UTC 13.00 เวลาไทยคือ 20.00(UTC/GMT +7)
         getConnection.query(sql, (err, res) => {
             !err ? console.log("Insert Successfully. Increase id: " + res.insertId) : console.log("Insert " + err);
         })
