@@ -1,10 +1,12 @@
-import { createConnection } from 'mysql'
+// import { createConnection } from 'mysql'
+import pkg from 'mysql'
+const { createConnection } = pkg
 
 const getConnection = createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "smartpark"
+    database: "Smartpark"
 })
 
 //เชื่อมต่อฐานข้อมูล MySQL
