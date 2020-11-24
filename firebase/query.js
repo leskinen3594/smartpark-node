@@ -9,7 +9,8 @@ function qry(database){
     let m           = date.getMonth() + 1
     let y           = date.getFullYear()
     let now         = y + "-" + m + "-" + d
-    let val_pc      = []
+    let val_pc1     = []
+    let val_pc2     = []
     let disp        = false
 
     setInterval(() => {
@@ -30,12 +31,18 @@ function qry(database){
                                 disp = false
                             }
                         }
-                        if(disp == true) {
-                            if("Total_people" === key2) {
-                                val_pc[0] = pc2[key2]           //ตัวแปรเก็บค่าจำนวนคนที่จะนำเข้า MySQL
+                        if(disp == false) {
+                            if("Total_people1" === key2) {
+                                val_pc1[0] = pc2[key2]           //ตัวแปรเก็บค่าจำนวนคนที่จะนำเข้า MySQL
                             }
-                            else if("Total_car" === key2) {
-                                val_pc[1] = pc2[key2]           //ตัวแปรเก็บค่าจำนวนรถที่จะนำเข้า MySQL
+                            else if("Total_car1" === key2) {
+                                val_pc1[1] = pc2[key2]           //ตัวแปรเก็บค่าจำนวนรถที่จะนำเข้า MySQL
+                            }
+                            else if("Total_people2" === key2){
+                                val_pc2[0] = pc2[key2]
+                            }
+                            else if("Total_car2" === key2){
+                                val_pc2[1] = pc2[key2]
                             }
                         }
                     }
@@ -43,13 +50,19 @@ function qry(database){
             }    
         })
 
-        // console.log(`val_pc = ${val_pc}`);
-        // console.log(`valp = ${val_pc[0]}`);
-        // console.log(`valc = ${val_pc[1]}`);
-        // console.log("-----------------------------------------------------------------------------------");
-        
+        console.log(`val_pc1 = ${val_pc1}`);
+        console.log(`valp1 = ${val_pc1[0]}`);
+        console.log(`valc1 = ${val_pc1[1]}`);
+        console.log("-----------------------------------------------------------------------------------");
+        console.log(`val_pc2 = ${val_pc2}`);
+        console.log(`valp2 = ${val_pc2[0]}`);
+        console.log(`valc2 = ${val_pc2[1]}`);
+        console.log("-----------------------------------------------------------------------------------");
+        console.log(`perple1 = ${getValues[0][0]} and people2 = ${getValues[1][0]}`);
+        console.log(`car1 = ${getValues[0][1]} and car2 = ${getValues[1][1]}`);
+        console.log("###################################################################################");
     },3000)
-    return val_pc
+    return [ val_pc1, val_pc2 ]
 }
 
 export { getValues }
