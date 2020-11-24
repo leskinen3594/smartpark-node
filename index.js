@@ -28,14 +28,29 @@ function checkFormatTime(i) {
 
 setInterval(() => {
     // รับข้อมูลจาก query.js
-    let people_total    = getValues[0]
-    let cars_total      = getValues[1]
-    console.log(`people = ${people_total}`);
-    console.log(`cars = ${cars_total}`);
+    let people_total_1  = getValues[0][0]
+    let cars_total_1    = getValues[0][1]
+    let people_total_2  = getValues[1][0]
+    let cars_total_2    = getValues[1][1]
+
+    console.log(`people1 = ${people_total_1}`);
+    console.log(`cars1 = ${cars_total_1}`);
+    console.log(`people2 = ${people_total_2}`);
+    console.log(`cars2 = ${cars_total_2}`);
+    console.log("########################### END SHOW get values ###############################");
+
+    // รวมค่า sensor1 กับ sensor2
+    let people_total    = people_total_1 + people_total_2
+    let cars_total      = cars_total_1 + cars_total_2
+    
+    console.log(`people total = ${people_total}`);
+    console.log(`cars total = ${cars_total}`);
+    console.log("########################### END SHOW total sum value ###############################");
 
     // เรียกใช้ function startTime เพื่อรับค่าวันที่และเวลามาเก็บไว้ในตัวแปร
     let date_time = startTime()[0]
     let time      = startTime()[1]    
+    
     console.log(`date_time = ${date_time}`);
 
     let sql = `INSERT INTO total(total_id, total_people, total_car, date) VALUES(${null}, ${people_total}, ${cars_total}, "${date_time}")`
